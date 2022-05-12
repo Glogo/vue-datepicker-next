@@ -135,6 +135,12 @@ function Calendar(originalProps: CalendarProps) {
       classes.push('disabled');
     } else if (innerValue.value.some((v) => v.getTime() === cellDate.getTime())) {
       classes.push('active');
+      if (innerValue.value[0].getTime() === cellDate.getTime()) {
+        classes.push('start');
+      }
+      if (innerValue.value[1]?.getTime() === cellDate.getTime()) {
+        classes.push('end');
+      }
     }
     return classes.concat(props.getClasses(cellDate, innerValue.value, classes.join(' ')));
   };
